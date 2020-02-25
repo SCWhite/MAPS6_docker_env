@@ -275,15 +275,22 @@ def GET_TEMP_HUM():
         print(reveive_data)
         print("".join("%02x " % i for i in reveive_data).upper())
 
-    #
-    TEMP = (reveive_data[3]*256 + reveive_data[2])/100
-    HUM  = (reveive_data[5]*256 + reveive_data[4])/100
-    if debug:
-        print("TEMP: "+ str(TEMP))
-        print("HUM: "+ str(HUM))
-        print("------------------------------")
-    #
+    #add exception
+    try:
+        TEMP = (reveive_data[3]*256 + reveive_data[2])/100
+        HUM  = (reveive_data[5]*256 + reveive_data[4])/100
+        if debug:
+            print("TEMP: "+ str(TEMP))
+            print("HUM: "+ str(HUM))
+            print("------------------------------")
+        #
+    except:
+        TEMP = 0
+        HUM  = 0
+
     return TEMP,HUM
+
+    
 
 
 def GET_CO2():
