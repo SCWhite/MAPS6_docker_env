@@ -24,6 +24,12 @@ import Adafruit_SSD1306
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
+from datetime import datetime
+
+#fix here
+DEVICE_ID = "MAPSV6_001"
+DEVICE_IP = "192.168.12.8"
+
 
 # Raspberry Pi pin configuration:
 RST = 24
@@ -142,13 +148,13 @@ def display(temp=0,hum=0,pm25=0,co2=0):
     #oled.clear()
     flush()
     pairs = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S").split(" ")
-    line("ID: " + Conf.DEVICE_ID)
+    line("ID: " + DEVICE_ID)
     line("Date: " + str(pairs[0]))
     line("Time: " + str(pairs[1]))
     line("Temp: " + str(temp) + " / " + "RH: " + str(hum))
     line("PM2.5: " + str(pm25) + " um")
     line("CO2: " + str(co2) + " ppm")
-    line("IP: " + Conf.DEVICE_IP)
+    line("IP: " + DEVICE_IP)
     show()
 
 

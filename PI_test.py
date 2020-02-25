@@ -31,7 +31,7 @@ PM10_AE     = 0
 def show_task():
     while True:
         oled.display(TEMP,HUM,PM25_AE,CO2)
-        time.sleep(0.5)
+        time.sleep(0.3) #use about 18% cpu
 
 #start oled displaying
 t = threading.Thread(target = show_task)
