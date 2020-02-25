@@ -17,6 +17,7 @@ Conf = __import__(PATH_OF_CONFIG)
 #temperary value
 do_condition = 1
 loop = 0
+
 #preset
 TEMP        = 0
 HUM         = 0
@@ -31,12 +32,26 @@ PM10_AE     = 0
 def show_task():
     while True:
         oled.display(TEMP,HUM,PM25_AE,CO2)
-        time.sleep(0.3) #use about 18% cpu
+        time.sleep(0.3) #use about 18% cpu on PI3
+
+def upload_task():
+    while True:
+        pairs = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S").split(" ")
+        msg = "|gps_lat=25.1933|s_t0=" + str(TEMP) + "|app=MAPS6|date=" + pairs[0] + "|s_d2=" + str(PM1_AE) + "|s_d0=" + str(PM25_AE) + "|s_d1=" + str(PM10_AE) + "|s_h0=" + str(HUM) + "|device_id=" + Conf.DEVICE_ID +"|s_g8=" + str(CO2) + "|gps_lon=121.787|ver_app=0.0.1|time=" + pairs[1]
+        print("message send!")
+        restful_str = Conf.Restful_URL + "topic=" + Conf.APP_ID + "&device_id=" + Conf.DEVICE_ID + "&key=" + Conf.SecureKey + "&msg=" + msg
+        r = requests.get(restful_str)
+        time.sleep(60) 
 
 #start oled displaying
-t = threading.Thread(target = show_task)
-t.setDaemon(True)
-t.start()
+display_t = threading.Thread(target = show_task)
+display_t.setDaemon(True)
+display_t.start()
+
+#start upload routine
+upload_t = threading.Thread(target = upload_task)
+upload_t.setDaemon(True)
+upload_t.start()
 
 
 try:
@@ -136,16 +151,16 @@ try:
         pi.save_data(path,format_data_list)
 
         print("------------------------")
-        print("upload data")
+        print("upload data") #change to another thread
         #url = Conf.Restful_URL +
-        msg = "|gps_lat=25.1933|s_t0=" + str(TEMP) + "|app=MAPS6|date=" + pairs[0] + "|s_d2=" + str(PM1_AE) + "|s_d0=" + str(PM25_AE) + "|s_d1=" + str(PM10_AE) + "|s_h0=" + str(HUM) + "|device_id=" + Conf.DEVICE_ID +"|s_g8=" + str(CO2) + "|gps_lon=121.787|ver_app=0.0.1|time=" + pairs[1]
-        print(msg)
-        restful_str = Conf.Restful_URL + "topic=" + Conf.APP_ID + "&device_id=" + Conf.DEVICE_ID + "&key=" + Conf.SecureKey + "&msg=" + msg
-        r = requests.get(restful_str)
+        #msg = "|gps_lat=25.1933|s_t0=" + str(TEMP) + "|app=MAPS6|date=" + pairs[0] + "|s_d2=" + str(PM1_AE) + "|s_d0=" + str(PM25_AE) + "|s_d1=" + str(PM10_AE) + "|s_h0=" + str(HUM) + "|device_id=" + Conf.DEVICE_ID +"|s_g8=" + str(CO2) + "|gps_lon=121.787|ver_app=0.0.1|time=" + pairs[1]
+        #print(msg)
+        #restful_str = Conf.Restful_URL + "topic=" + Conf.APP_ID + "&device_id=" + Conf.DEVICE_ID + "&key=" + Conf.SecureKey + "&msg=" + msg
+        #r = requests.get(restful_str)
         print("------------------------")
 
         loop = loop + 1
-        time.sleep(60)
+        time.sleep(5)
         print("========================")
 
 except KeyboardInterrupt:
