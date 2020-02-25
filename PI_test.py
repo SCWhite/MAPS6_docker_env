@@ -3,9 +3,11 @@ import serial
 import time
 import libs.MAPS_mcu as mcu
 import libs.MAPS_pi as pi
+import libs.display as oled
 from datetime import datetime
 
 import requests
+import threading
 
 #import current file's config, by getting the script name with '.py' replace by '_confg'
 #ex: import "maps_V6_general.py" > "maps_V6_general_config" as Conf
@@ -15,7 +17,27 @@ Conf = __import__(PATH_OF_CONFIG)
 #temperary value
 do_condition = 1
 loop = 0
-#
+#preset
+TEMP        = 0
+HUM         = 0
+CO2         = 0
+TVOC        = 0
+Illuminance = 0
+PM1_AE      = 0
+PM25_AE     = 0
+PM10_AE     = 0
+
+
+def show_task():
+    while True:
+        oled.display(TEMP,HUM,PM25_AE,CO2)
+        time.sleep(0.5)
+
+#start oled displaying
+t = threading.Thread(target = show_task)
+t.setDaemon(True)
+t.start()
+
 
 try:
     print("START")
