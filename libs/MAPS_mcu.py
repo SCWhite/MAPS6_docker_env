@@ -311,16 +311,16 @@ def GET_CO2():
 
     #add exception
     try:
-	    CO2      = (reveive_data[3]*256 + reveive_data[2])
-	    AVE_CO2  = (reveive_data[5]*256 + reveive_data[4])
-	    if debug:
-	        print("CO2: "+ str(CO2))
-	        print("AVE_CO2: "+ str(AVE_CO2))
-	        print("------------------------------")
-	    #
-	except:
-		CO2      = 0
-		AVE_CO2  = 0
+        CO2      = (reveive_data[3]*256 + reveive_data[2])
+        AVE_CO2  = (reveive_data[5]*256 + reveive_data[4])
+        if debug:
+            print("CO2: "+ str(CO2))
+            print("AVE_CO2: "+ str(AVE_CO2))
+            print("------------------------------")
+        #
+    except:
+        CO2      = 0
+        AVE_CO2  = 0
 
     return CO2,AVE_CO2
 
@@ -342,29 +342,29 @@ def GET_TVOC():
 
     #add exception
     try:
-	    TVOC           = (reveive_data[3]*256 + reveive_data[2])
-	    eCO2           = (reveive_data[5]*256 + reveive_data[4])
-	    S_H2           = (reveive_data[7]*256 + reveive_data[6])
-	    S_ETHANOL      = (reveive_data[9]*256 + reveive_data[8])
-	    BASELINE_TVOC  = (reveive_data[11]*256 + reveive_data[10])
-	    BASELINE_eCO2  = (reveive_data[13]*256 + reveive_data[12])
-	    if debug:
-	        print("TVOC: "+ str(TVOC))
-	        print("eCO2: "+ str(eCO2))
-	        print("S_H2: "+ str(S_H2))
-	        print("S_ETHANOL: "+ str(S_ETHANOL))
-	        print("BASELINE_TVOC: "+ str(BASELINE_TVOC))
-	        print("BASELINE_eCO2: "+ str(BASELINE_eCO2))
-	        print("------------------------------")
-	    #
-	    #please consider other value(baseline)
-	except:
-		TVOC           = 0
-		eCO2           = 0
-		S_H2           = 0
-		S_ETHANOL      = 0
-		BASELINE_TVOC  = 0
-		BASELINE_eCO2  = 0
+        TVOC           = (reveive_data[3]*256 + reveive_data[2])
+        eCO2           = (reveive_data[5]*256 + reveive_data[4])
+        S_H2           = (reveive_data[7]*256 + reveive_data[6])
+        S_ETHANOL      = (reveive_data[9]*256 + reveive_data[8])
+        BASELINE_TVOC  = (reveive_data[11]*256 + reveive_data[10])
+        BASELINE_eCO2  = (reveive_data[13]*256 + reveive_data[12])
+        if debug:
+            print("TVOC: "+ str(TVOC))
+            print("eCO2: "+ str(eCO2))
+            print("S_H2: "+ str(S_H2))
+            print("S_ETHANOL: "+ str(S_ETHANOL))
+            print("BASELINE_TVOC: "+ str(BASELINE_TVOC))
+            print("BASELINE_eCO2: "+ str(BASELINE_eCO2))
+            print("------------------------------")
+        #
+        #please consider other value(baseline)
+    except:
+        TVOC           = 0
+        eCO2           = 0
+        S_H2           = 0
+        S_ETHANOL      = 0
+        BASELINE_TVOC  = 0
+        BASELINE_eCO2  = 0
 
     TVOC_ALL = [TVOC,eCO2,S_H2,S_ETHANOL,BASELINE_TVOC,BASELINE_eCO2]
     
@@ -388,28 +388,28 @@ def GET_LIGHT():
 
     #add exception
     try:
-	    Illuminance         = (reveive_data[3]*256 + reveive_data[2])
-	    ColorTemperature    = (reveive_data[5]*256 + reveive_data[4])
-	    CH_R                = (reveive_data[7]*256 + reveive_data[6])
-	    CH_G                = (reveive_data[9]*256 + reveive_data[8])
-	    CH_B                = (reveive_data[11]*256 + reveive_data[10])
-	    CH_C                = (reveive_data[13]*256 + reveive_data[12])
-	    if debug:
-	        print("Illuminance: "+ str(Illuminance))
-	        print("ColorTemperature: "+ str(ColorTemperature))
-	        print("CH_R: "+ str(CH_R))
-	        print("CH_G: "+ str(CH_G))
-	        print("CH_B: "+ str(CH_B))
-	        print("CH_C: "+ str(CH_C))
-	        print("------------------------------")
-	    #
-	except:
-		Illuminance         = 0
-		ColorTemperature    = 0
-		CH_R                = 0
-		CH_G                = 0
-		CH_B                = 0
-		CH_C                = 0
+        Illuminance         = (reveive_data[3]*256 + reveive_data[2])
+        ColorTemperature    = (reveive_data[5]*256 + reveive_data[4])
+        CH_R                = (reveive_data[7]*256 + reveive_data[6])
+        CH_G                = (reveive_data[9]*256 + reveive_data[8])
+        CH_B                = (reveive_data[11]*256 + reveive_data[10])
+        CH_C                = (reveive_data[13]*256 + reveive_data[12])
+        if debug:
+            print("Illuminance: "+ str(Illuminance))
+            print("ColorTemperature: "+ str(ColorTemperature))
+            print("CH_R: "+ str(CH_R))
+            print("CH_G: "+ str(CH_G))
+            print("CH_B: "+ str(CH_B))
+            print("CH_C: "+ str(CH_C))
+            print("------------------------------")
+        #
+    except:
+        Illuminance         = 0
+        ColorTemperature    = 0
+        CH_R                = 0
+        CH_G                = 0
+        CH_B                = 0
+        CH_C                = 0
 
     #return a LIST
     LIGHT = [Illuminance,ColorTemperature,CH_R,CH_G,CH_B,CH_C]
@@ -433,28 +433,28 @@ def GET_PMS():
 
     #add exception
     try:
-	    PM1_AE   = (reveive_data[3]*256 + reveive_data[2])
-	    PM25_AE  = (reveive_data[5]*256 + reveive_data[4])
-	    PM10_AE  = (reveive_data[7]*256 + reveive_data[6])
-	    PM1_SP   = (reveive_data[9]*256 + reveive_data[8])
-	    PM25_SP  = (reveive_data[11]*256 + reveive_data[10])
-	    PM10_SP  = (reveive_data[13]*256 + reveive_data[12])
-	    if debug:
-	        print("PM1_AE: "+ str(PM1_AE))
-	        print("PM25_AE: "+ str(PM25_AE))
-	        print("PM10_AE: "+ str(PM10_AE))
-	        print("PM1_SP: "+ str(PM1_SP))
-	        print("PM25_SP: "+ str(PM25_SP))
-	        print("PM10_SP: "+ str(PM10_SP))
-	        print("------------------------------")
-	    #
-	except:
-		PM1_AE   = 0
-		PM25_AE  = 0
-		PM10_AE  = 0
-		PM1_SP   = 0
-		PM25_SP  = 0
-		PM10_SP  = 0
+        PM1_AE   = (reveive_data[3]*256 + reveive_data[2])
+        PM25_AE  = (reveive_data[5]*256 + reveive_data[4])
+        PM10_AE  = (reveive_data[7]*256 + reveive_data[6])
+        PM1_SP   = (reveive_data[9]*256 + reveive_data[8])
+        PM25_SP  = (reveive_data[11]*256 + reveive_data[10])
+        PM10_SP  = (reveive_data[13]*256 + reveive_data[12])
+        if debug:
+            print("PM1_AE: "+ str(PM1_AE))
+            print("PM25_AE: "+ str(PM25_AE))
+            print("PM10_AE: "+ str(PM10_AE))
+            print("PM1_SP: "+ str(PM1_SP))
+            print("PM25_SP: "+ str(PM25_SP))
+            print("PM10_SP: "+ str(PM10_SP))
+            print("------------------------------")
+        #
+    except:
+        PM1_AE   = 0
+        PM25_AE  = 0
+        PM10_AE  = 0
+        PM1_SP   = 0
+        PM25_SP  = 0
+        PM10_SP  = 0
 
     #return a LIST
     PMS = [PM1_AE,PM25_AE,PM10_AE,PM1_SP,PM25_SP,PM10_SP]
@@ -478,52 +478,52 @@ def GET_SENSOR_ALL():
 
     #add exception
     try:
-	    TEMP                = (reveive_data[3]*256 + reveive_data[2])/100
-	    HUM                 = (reveive_data[5]*256 + reveive_data[4])/100
-	    CO2                 = (reveive_data[7]*256 + reveive_data[6])
-	    AVE_CO2             = (reveive_data[9]*256 + reveive_data[8])
-	    TVOC                = (reveive_data[11]*256 + reveive_data[10])
-	    eCO2                = (reveive_data[13]*256 + reveive_data[12])
-	    S_H2                = (reveive_data[15]*256 + reveive_data[14])
-	    S_ETHANOL           = (reveive_data[17]*256 + reveive_data[16])
-	    BASELINE_TVOC       = (reveive_data[19]*256 + reveive_data[18])
-	    BASELINE_eCO2       = (reveive_data[21]*256 + reveive_data[20])
-	    Illuminance         = (reveive_data[23]*256 + reveive_data[22])
-	    ColorTemperature    = (reveive_data[25]*256 + reveive_data[24])
-	    CH_R                = (reveive_data[27]*256 + reveive_data[26])
-	    CH_G                = (reveive_data[29]*256 + reveive_data[28])
-	    CH_B                = (reveive_data[31]*256 + reveive_data[30])
-	    CH_C                = (reveive_data[33]*256 + reveive_data[32])
-	    PM1_AE              = (reveive_data[35]*256 + reveive_data[34])
-	    PM25_AE             = (reveive_data[37]*256 + reveive_data[36])
-	    PM10_AE             = (reveive_data[39]*256 + reveive_data[38])
-	    PM1_SP              = (reveive_data[41]*256 + reveive_data[40])
-	    PM25_SP             = (reveive_data[43]*256 + reveive_data[42])
-	    PM10_SP             = (reveive_data[45]*256 + reveive_data[44])
-	    #
-	except:
-		TEMP                = 0
-		HUM                 = 0
-		CO2                 = 0
-		AVE_CO2             = 0
-		TVOC                = 0
-		eCO2                = 0
-		S_H2                = 0
-		S_ETHANOL           = 0
-		BASELINE_TVOC       = 0
-		BASELINE_eCO2       = 0
-		Illuminance         = 0
-		ColorTemperature    = 0
-		CH_R                = 0
-		CH_G                = 0
-		CH_B                = 0
-		CH_C                = 0
-		PM1_AE              = 0
-		PM25_AE             = 0
-		PM10_AE             = 0
-		PM1_SP              = 0
-		PM25_SP             = 0
-		PM10_SP             = 0
+        TEMP                = (reveive_data[3]*256 + reveive_data[2])/100
+        HUM                 = (reveive_data[5]*256 + reveive_data[4])/100
+        CO2                 = (reveive_data[7]*256 + reveive_data[6])
+        AVE_CO2             = (reveive_data[9]*256 + reveive_data[8])
+        TVOC                = (reveive_data[11]*256 + reveive_data[10])
+        eCO2                = (reveive_data[13]*256 + reveive_data[12])
+        S_H2                = (reveive_data[15]*256 + reveive_data[14])
+        S_ETHANOL           = (reveive_data[17]*256 + reveive_data[16])
+        BASELINE_TVOC       = (reveive_data[19]*256 + reveive_data[18])
+        BASELINE_eCO2       = (reveive_data[21]*256 + reveive_data[20])
+        Illuminance         = (reveive_data[23]*256 + reveive_data[22])
+        ColorTemperature    = (reveive_data[25]*256 + reveive_data[24])
+        CH_R                = (reveive_data[27]*256 + reveive_data[26])
+        CH_G                = (reveive_data[29]*256 + reveive_data[28])
+        CH_B                = (reveive_data[31]*256 + reveive_data[30])
+        CH_C                = (reveive_data[33]*256 + reveive_data[32])
+        PM1_AE              = (reveive_data[35]*256 + reveive_data[34])
+        PM25_AE             = (reveive_data[37]*256 + reveive_data[36])
+        PM10_AE             = (reveive_data[39]*256 + reveive_data[38])
+        PM1_SP              = (reveive_data[41]*256 + reveive_data[40])
+        PM25_SP             = (reveive_data[43]*256 + reveive_data[42])
+        PM10_SP             = (reveive_data[45]*256 + reveive_data[44])
+        #
+    except:
+        TEMP                = 0
+        HUM                 = 0
+        CO2                 = 0
+        AVE_CO2             = 0
+        TVOC                = 0
+        eCO2                = 0
+        S_H2                = 0
+        S_ETHANOL           = 0
+        BASELINE_TVOC       = 0
+        BASELINE_eCO2       = 0
+        Illuminance         = 0
+        ColorTemperature    = 0
+        CH_R                = 0
+        CH_G                = 0
+        CH_B                = 0
+        CH_C                = 0
+        PM1_AE              = 0
+        PM25_AE             = 0
+        PM10_AE             = 0
+        PM1_SP              = 0
+        PM25_SP             = 0
+        PM10_SP             = 0
 
     #passthis with LIST maybe?
     SENSOR_ALL = [TEMP,HUM,CO2,AVE_CO2,TVOC,eCO2,S_H2,S_ETHANOL,BASELINE_TVOC,BASELINE_eCO2,Illuminance,ColorTemperature,CH_R,CH_G,CH_B,CH_C,PM1_AE,PM25_AE,PM10_AE,PM1_SP,PM25_SP,PM10_SP]
@@ -549,13 +549,13 @@ def GET_INFO_VERSION():
 
     #add exception
     try:
-	    VERSION = (reveive_data[3]*256 + reveive_data[2])
-	    if debug:
-	        print("VERSION: "+ str(VERSION))
-	        print("------------------------------")
-	    #
+        VERSION = (reveive_data[3]*256 + reveive_data[2])
+        if debug:
+            print("VERSION: "+ str(VERSION))
+            print("------------------------------")
+        #
     except:
-		VERSION = 0
+        VERSION = 0
 
     return VERSION
 
@@ -577,22 +577,22 @@ def GET_INFO_RUNTIME():
 
     #add exception
     try:
-	    RT_DAY   = (reveive_data[3]*256 + reveive_data[2])
-	    RT_HOUR  = (reveive_data[4])
-	    RT_MIN   = (reveive_data[5])
-	    RT_SEC   = (reveive_data[6])
-	    if debug:
-	        print("RT_DAY: "+ str(RT_DAY))
-	        print("RT_HOUR: "+ str(RT_HOUR))
-	        print("RT_MIN: "+ str(RT_MIN))
-	        print("RT_SEC: "+ str(RT_SEC))
-	        print("------------------------------")
-	    #
-	except:
-		RT_DAY   = 0
-		RT_HOUR  = 0
-		RT_MIN   = 0
-		RT_SEC   = 0
+        RT_DAY   = (reveive_data[3]*256 + reveive_data[2])
+        RT_HOUR  = (reveive_data[4])
+        RT_MIN   = (reveive_data[5])
+        RT_SEC   = (reveive_data[6])
+        if debug:
+            print("RT_DAY: "+ str(RT_DAY))
+            print("RT_HOUR: "+ str(RT_HOUR))
+            print("RT_MIN: "+ str(RT_MIN))
+            print("RT_SEC: "+ str(RT_SEC))
+            print("------------------------------")
+        #
+    except:
+        RT_DAY   = 0
+        RT_HOUR  = 0
+        RT_MIN   = 0
+        RT_SEC   = 0
 
     #return a LIST
     RUNTIME = [RT_DAY,RT_HOUR,RT_MIN,RT_SEC]
@@ -616,28 +616,28 @@ def GET_INFO_ERROR_LOG():
 
     #add exception
     try:
-	    ERROR_TEMP_HUM  = (reveive_data[3]*256 + reveive_data[2])
-	    ERROR_CO2       = (reveive_data[5]*256 + reveive_data[4])
-	    ERROR_TVOC      = (reveive_data[7]*256 + reveive_data[6])
-	    ERROR_LIGHT     = (reveive_data[9]*256 + reveive_data[8])
-	    ERROR_PMS       = (reveive_data[11]*256 + reveive_data[10])
-	    ERROR_RTC       = (reveive_data[13]*256 + reveive_data[12])
-	    if debug:
-	        print("ERROR_TEMP_HUM: "+ str(ERROR_TEMP_HUM))
-	        print("ERROR_CO2: "+ str(ERROR_CO2))
-	        print("ERROR_TVOC: "+ str(ERROR_TVOC))
-	        print("ERROR_LIGHT: "+ str(ERROR_LIGHT))
-	        print("ERROR_PMS: "+ str(ERROR_PMS))
-	        print("ERROR_RTC: "+ str(ERROR_RTC))
-	        print("------------------------------")
-	    #
-	except:
-		ERROR_TEMP_HUM  = 0
-		ERROR_CO2       = 0
-		ERROR_TVOC      = 0
-		ERROR_LIGHT     = 0
-		ERROR_PMS       = 0
-		ERROR_RTC       = 0
+        ERROR_TEMP_HUM  = (reveive_data[3]*256 + reveive_data[2])
+        ERROR_CO2       = (reveive_data[5]*256 + reveive_data[4])
+        ERROR_TVOC      = (reveive_data[7]*256 + reveive_data[6])
+        ERROR_LIGHT     = (reveive_data[9]*256 + reveive_data[8])
+        ERROR_PMS       = (reveive_data[11]*256 + reveive_data[10])
+        ERROR_RTC       = (reveive_data[13]*256 + reveive_data[12])
+        if debug:
+            print("ERROR_TEMP_HUM: "+ str(ERROR_TEMP_HUM))
+            print("ERROR_CO2: "+ str(ERROR_CO2))
+            print("ERROR_TVOC: "+ str(ERROR_TVOC))
+            print("ERROR_LIGHT: "+ str(ERROR_LIGHT))
+            print("ERROR_PMS: "+ str(ERROR_PMS))
+            print("ERROR_RTC: "+ str(ERROR_RTC))
+            print("------------------------------")
+        #
+    except:
+        ERROR_TEMP_HUM  = 0
+        ERROR_CO2       = 0
+        ERROR_TVOC      = 0
+        ERROR_LIGHT     = 0
+        ERROR_PMS       = 0
+        ERROR_RTC       = 0
 
     ERROR_LOG = [ERROR_TEMP_HUM,ERROR_CO2,ERROR_TVOC,ERROR_LIGHT,ERROR_PMS,ERROR_RTC]
     return ERROR_LOG
@@ -660,32 +660,32 @@ def GET_INFO_SENSOR_POR():
 
     #add exception
     try:
-	    POR_TEMP_HUM  = (reveive_data[2])
-	    POR_CO2       = (reveive_data[3])
-	    POR_TVOC      = (reveive_data[4])
-	    POR_LIGHT     = (reveive_data[5])
-	    POR_PMS       = (reveive_data[6])
-	    POR_RTC       = (reveive_data[7])
-	    POLL_TEMP_HUM = (reveive_data[8])
-	    POLL_CO2      = (reveive_data[9])
-	    POLL_TVOC     = (reveive_data[10])
-	    POLL_LIGHT    = (reveive_data[11])
-	    POLL_PMS      = (reveive_data[12])
-	    POLL_RTC      = (reveive_data[13])
-	    #
-	except:
-		POR_TEMP_HUM  = 0
-		POR_CO2       = 0
-		POR_TVOC      = 0
-		POR_LIGHT     = 0
-		POR_PMS       = 0
-		POR_RTC       = 0
-		POLL_TEMP_HUM = 0
-		POLL_CO2      = 0
-		POLL_TVOC     = 0
-		POLL_LIGHT    = 0
-		POLL_PMS      = 0
-		POLL_RTC      = 0
+        POR_TEMP_HUM  = (reveive_data[2])
+        POR_CO2       = (reveive_data[3])
+        POR_TVOC      = (reveive_data[4])
+        POR_LIGHT     = (reveive_data[5])
+        POR_PMS       = (reveive_data[6])
+        POR_RTC       = (reveive_data[7])
+        POLL_TEMP_HUM = (reveive_data[8])
+        POLL_CO2      = (reveive_data[9])
+        POLL_TVOC     = (reveive_data[10])
+        POLL_LIGHT    = (reveive_data[11])
+        POLL_PMS      = (reveive_data[12])
+        POLL_RTC      = (reveive_data[13])
+        #
+    except:
+        POR_TEMP_HUM  = 0
+        POR_CO2       = 0
+        POR_TVOC      = 0
+        POR_LIGHT     = 0
+        POR_PMS       = 0
+        POR_RTC       = 0
+        POLL_TEMP_HUM = 0
+        POLL_CO2      = 0
+        POLL_TVOC     = 0
+        POLL_LIGHT    = 0
+        POLL_PMS      = 0
+        POLL_RTC      = 0
 
     SENSOR_POR = [POR_TEMP_HUM,POR_CO2,POR_TVOC,POR_LIGHT,POR_PMS,POR_RTC,POLL_TEMP_HUM,POLL_CO2,POLL_TVOC,POLL_LIGHT,POLL_PMS,POLL_RTC]
     return SENSOR_POR
@@ -708,20 +708,20 @@ def GET_RTC_DATE_TIME():
 
     #add exception
     try:
-	    RTC_YY  = (reveive_data[2])
-	    RTC_MM  = (reveive_data[3])
-	    RTC_DD  = (reveive_data[4])
-	    RTC_hh  = (reveive_data[5])
-	    RTC_mm  = (reveive_data[6])
-	    RTC_ss  = (reveive_data[7])
+        RTC_YY  = (reveive_data[2])
+        RTC_MM  = (reveive_data[3])
+        RTC_DD  = (reveive_data[4])
+        RTC_hh  = (reveive_data[5])
+        RTC_mm  = (reveive_data[6])
+        RTC_ss  = (reveive_data[7])
     #
     except:
-    	RTC_YY  = 0
-		RTC_MM  = 0
-		RTC_DD  = 0
-		RTC_hh  = 0
-		RTC_mm  = 0
-		RTC_ss  = 0
+        RTC_YY  = 0
+        RTC_MM  = 0
+        RTC_DD  = 0
+        RTC_hh  = 0
+        RTC_mm  = 0
+        RTC_ss  = 0
 
     DATE_TIME = [RTC_YY,RTC_MM,RTC_DD,RTC_hh,RTC_mm,RTC_ss]
     return DATE_TIME
@@ -744,22 +744,22 @@ def GET_INFO_PIN_STATE():
 
     #add exception
     try:
-	    PIN_CO2_CAL       = (reveive_data[2])
-	    PIN_PMS_RESET     = (reveive_data[3])
-	    PIN_PMS_SET       = (reveive_data[4])
-	    PIN_NBIOT_PWRKEY  = (reveive_data[5])
-	    PIN_NBIOT_SLEEP   = (reveive_data[6])
-	    PIN_LED_CTRL      = (reveive_data[7])
-	    PIN_FAN_CTRL      = (reveive_data[8])
-	    #
-	except:
-		PIN_CO2_CAL       = 0
-		PIN_PMS_RESET     = 0
-		PIN_PMS_SET       = 0
-		PIN_NBIOT_PWRKEY  = 0
-		PIN_NBIOT_SLEEP   = 0
-		PIN_LED_CTRL      = 0
-		PIN_FAN_CTRL      = 0
+        PIN_CO2_CAL       = (reveive_data[2])
+        PIN_PMS_RESET     = (reveive_data[3])
+        PIN_PMS_SET       = (reveive_data[4])
+        PIN_NBIOT_PWRKEY  = (reveive_data[5])
+        PIN_NBIOT_SLEEP   = (reveive_data[6])
+        PIN_LED_CTRL      = (reveive_data[7])
+        PIN_FAN_CTRL      = (reveive_data[8])
+        #
+    except:
+        PIN_CO2_CAL       = 0
+        PIN_PMS_RESET     = 0
+        PIN_PMS_SET       = 0
+        PIN_NBIOT_PWRKEY  = 0
+        PIN_NBIOT_SLEEP   = 0
+        PIN_LED_CTRL      = 0
+        PIN_FAN_CTRL      = 0
 
     PIN_STATE = [PIN_CO2_CAL,PIN_PMS_RESET,PIN_PMS_SET,PIN_NBIOT_PWRKEY,PIN_NBIOT_SLEEP,PIN_LED_CTRL,PIN_FAN_CTRL]
     return PIN_STATE
@@ -789,14 +789,14 @@ def SET_STATUS_LED(state):
 
     #add exception
     try:
-	    Leading   = (reveive_data[0])
-	    Command   = (reveive_data[1])
-	    RESULT    = (reveive_data[2])
+        Leading   = (reveive_data[0])
+        Command   = (reveive_data[1])
+        RESULT    = (reveive_data[2])
     #
     except:
-    	Leading   = 0
-		Command   = 0
-		RESULT    = 0
+        Leading   = 0
+        Command   = 0
+        RESULT    = 0
 
     return RESULT
 
@@ -820,15 +820,15 @@ def SET_PIN_CO2_CAL(state):
 
     #add exception
     try:
-	    Leading   = (reveive_data[0])
-	    Command   = (reveive_data[1])
-	    RESULT    = (reveive_data[2])
+        Leading   = (reveive_data[0])
+        Command   = (reveive_data[1])
+        RESULT    = (reveive_data[2])
     #
     except:
-    	Leading   = 0
-		Command   = 0
-		RESULT    = 0
-		
+        Leading   = 0
+        Command   = 0
+        RESULT    = 0
+        
     return RESULT
 
 
@@ -851,15 +851,15 @@ def SET_PIN_PMS_RESET(state):
 
     #add exception
     try:
-	    Leading   = (reveive_data[0])
-	    Command   = (reveive_data[1])
-	    RESULT    = (reveive_data[2])
+        Leading   = (reveive_data[0])
+        Command   = (reveive_data[1])
+        RESULT    = (reveive_data[2])
     #
     except:
-    	Leading   = 0
-		Command   = 0
-		RESULT    = 0
-		
+        Leading   = 0
+        Command   = 0
+        RESULT    = 0
+        
     return RESULT
 
 
@@ -882,15 +882,15 @@ def SET_PIN_PMS_SET(state):
         
     #add exception
     try:
-	    Leading   = (reveive_data[0])
-	    Command   = (reveive_data[1])
-	    RESULT    = (reveive_data[2])
+        Leading   = (reveive_data[0])
+        Command   = (reveive_data[1])
+        RESULT    = (reveive_data[2])
     #
     except:
-    	Leading   = 0
-		Command   = 0
-		RESULT    = 0
-		
+        Leading   = 0
+        Command   = 0
+        RESULT    = 0
+        
     return RESULT
     
 
@@ -912,15 +912,15 @@ def SET_PIN_NBIOT_PWRKEY(state):
 
     #add exception
     try:
-	    Leading   = (reveive_data[0])
-	    Command   = (reveive_data[1])
-	    RESULT    = (reveive_data[2])
+        Leading   = (reveive_data[0])
+        Command   = (reveive_data[1])
+        RESULT    = (reveive_data[2])
     #
     except:
-    	Leading   = 0
-		Command   = 0
-		RESULT    = 0
-		
+        Leading   = 0
+        Command   = 0
+        RESULT    = 0
+        
     return RESULT
 
 
@@ -942,15 +942,15 @@ def SET_PIN_NBIOT_SLEEP(state):
 
     #add exception
     try:
-	    Leading   = (reveive_data[0])
-	    Command   = (reveive_data[1])
-	    RESULT    = (reveive_data[2])
+        Leading   = (reveive_data[0])
+        Command   = (reveive_data[1])
+        RESULT    = (reveive_data[2])
     #
     except:
-    	Leading   = 0
-		Command   = 0
-		RESULT    = 0
-		
+        Leading   = 0
+        Command   = 0
+        RESULT    = 0
+        
     return RESULT
 
 
@@ -973,15 +973,15 @@ def SET_PIN_LED_ALL(state):
 
     #add exception
     try:
-	    Leading   = (reveive_data[0])
-	    Command   = (reveive_data[1])
-	    RESULT    = (reveive_data[2])
+        Leading   = (reveive_data[0])
+        Command   = (reveive_data[1])
+        RESULT    = (reveive_data[2])
     #
     except:
-    	Leading   = 0
-		Command   = 0
-		RESULT    = 0
-		
+        Leading   = 0
+        Command   = 0
+        RESULT    = 0
+        
     return RESULT
 
 
@@ -1003,15 +1003,15 @@ def SET_POLLING_SENSOR(POLL_TEMP,POLL_CO2,POLL_TVOC,POLL_LIGHT,POLL_PMS,POLL_RTC
 
     #add exception
     try:
-	    Leading   = (reveive_data[0])
-	    Command   = (reveive_data[1])
-	    RESULT    = (reveive_data[2])
+        Leading   = (reveive_data[0])
+        Command   = (reveive_data[1])
+        RESULT    = (reveive_data[2])
     #
     except:
-    	Leading   = 0
-		Command   = 0
-		RESULT    = 0
-		
+        Leading   = 0
+        Command   = 0
+        RESULT    = 0
+        
     return RESULT
     
 
@@ -1033,15 +1033,15 @@ def SET_RTC_DATE_TIME(YY,MM,DD,hh,mm,ss):
 
     #add exception
     try:
-	    Leading   = (reveive_data[0])
-	    Command   = (reveive_data[1])
-	    RESULT    = (reveive_data[2])
+        Leading   = (reveive_data[0])
+        Command   = (reveive_data[1])
+        RESULT    = (reveive_data[2])
     #
     except:
-    	Leading   = 0
-		Command   = 0
-		RESULT    = 0
-		
+        Leading   = 0
+        Command   = 0
+        RESULT    = 0
+        
     return RESULT
 
 def SET_PIN_FAN_ALL(state):
@@ -1062,15 +1062,15 @@ def SET_PIN_FAN_ALL(state):
 
     ##add exception
     try:
-	    Leading   = (reveive_data[0])
-	    Command   = (reveive_data[1])
-	    RESULT    = (reveive_data[2])
+        Leading   = (reveive_data[0])
+        Command   = (reveive_data[1])
+        RESULT    = (reveive_data[2])
     #
     except:
-    	Leading   = 0
-		Command   = 0
-		RESULT    = 0
-		
+        Leading   = 0
+        Command   = 0
+        RESULT    = 0
+        
     return RESULT
 
 
