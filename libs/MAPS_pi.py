@@ -5,12 +5,13 @@ from datetime import datetime
 
 def GET_STORAGE_PATH():
 
-    if len(os.listdir("/media/pi")):
-        path = "/media/pi/" + os.listdir("/media/pi")[0]
+    try:
+        if len(os.listdir("/media/pi")):
+            path = "/media/pi/" + os.listdir("/media/pi")[0]
 
-        return path
+            return path
 
-    else:
+    except:
         path = Conf.FS_SD
 
         return path
@@ -29,6 +30,9 @@ def save_data(path,data_list):
         CSV_msg = CSV_msg + str(data_list[i]) + ','
         
     CSV_msg= CSV_msg[:-1] #to get rid  of ',' from last data
+
+    if not os.path.isdir(path):
+        os.mkdir(path)
 
     with open(path + "/" + pairs[0] + ".csv", "a") as f:
        f.write(CSV_msg + "\n")
