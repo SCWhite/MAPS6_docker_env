@@ -30,7 +30,8 @@ def save_data(path,data_list):
         CSV_msg = CSV_msg + str(data_list[i]) + ','
         
     CSV_msg= CSV_msg[:-1] #to get rid  of ',' from last data
-
+    
+    #no you can't do this / please fix, consider USB drive and native SD slot
     if not os.path.isdir(path):
         os.mkdir(path)
 

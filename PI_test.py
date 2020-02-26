@@ -32,7 +32,7 @@ PM10_AE     = 0
 def show_task():
     while True:
         oled.display(TEMP,HUM,PM25_AE,CO2)
-        time.sleep(0.3) #use about 18% cpu on PI3
+        time.sleep(Conf.show_interval) #0.3 seconds / use about 18% cpu on PI3
 
 def upload_task():
     while True:
@@ -41,22 +41,39 @@ def upload_task():
         print("message send!")
         restful_str = Conf.Restful_URL + "topic=" + Conf.APP_ID + "&device_id=" + Conf.DEVICE_ID + "&key=" + Conf.SecureKey + "&msg=" + msg
         r = requests.get(restful_str)
-        time.sleep(60) 
+        time.sleep(Conf.upload_interval) #60 seconds
+
+def save_task():
+    while True:
+        #format to ['device_id', 'date', 'time', 'Tmp',  'RH',   'PM2.5','PM10', 'PM1.0','Lux',  'CO2',  'TVOC']
+        pairs = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S").split(" ")
+        format_data_list = [Conf.DEVICE_ID,pairs[0],pairs[1],TEMP,HUM,PM25_AE,PM1_AE,PM10_AE,Illuminance,CO2,TVOC]
+        pi.save_data(path,format_data_list)  #please consider multiple save
+        print("message saved!")
+        time.sleep(Conf.save_interval) #60 seconds
+
 
 #start oled displaying
 display_t = threading.Thread(target = show_task)
 display_t.setDaemon(True)
-display_t.start()
+#display_t.start()
 
 #start upload routine
 upload_t = threading.Thread(target = upload_task)
 upload_t.setDaemon(True)
-upload_t.start()
+#upload_t.start()
 
+#start save routine
+save_t = threading.Thread(target = save_task)
+save_t.setDaemon(True)
+#save_t.start()
 
 try:
-    print("START")
+    print("START") 
     print("========================")
+
+    #add welcome image?
+    #TODO
 
     print("open port & init mcu")
     #mcu.ser=serial.Serial("COM57",115200,timeout=1)
@@ -114,6 +131,11 @@ try:
     #if need to do
 
     print("------------------------")
+    
+    #start routine job
+    display_t.start()
+    upload_t.start()
+    save_t.start()
 
 
     #close the fan
@@ -144,11 +166,11 @@ try:
         print("PM25_AE:" +str(PM25_AE))
         print("PM10_AE:" +str(PM10_AE))
         print("------------------------")
-        print("storage data")
+        print("storage data") #change to another thread
         #format to ['device_id', 'date', 'time', 'Tmp',  'RH',   'PM2.5','PM10', 'PM1.0','Lux',  'CO2',  'TVOC']
-        pairs = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S").split(" ")
-        format_data_list = [Conf.DEVICE_ID,pairs[0],pairs[1],TEMP,HUM,PM25_AE,PM1_AE,PM10_AE,Illuminance,CO2,TVOC]
-        pi.save_data(path,format_data_list)
+        #pairs = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S").split(" ")
+        #format_data_list = [Conf.DEVICE_ID,pairs[0],pairs[1],TEMP,HUM,PM25_AE,PM1_AE,PM10_AE,Illuminance,CO2,TVOC]
+        #pi.save_data(path,format_data_list)
 
         print("------------------------")
         print("upload data") #change to another thread
@@ -165,6 +187,7 @@ try:
 
 except KeyboardInterrupt:
     mcu.ser.close()
+    print("ERROR!!")
     pass
 
 

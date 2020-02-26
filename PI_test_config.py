@@ -34,3 +34,8 @@ Restful_URL = "https://data.lass-net.org/Upload/MAPS-secure.php?"
 #setting
 GPS_LAT = 25.1933
 GPS_LON = 121.7870
+
+#interval(seconds)
+show_interval   = 0.3
+upload_interval = 60
+save_interval   = 60
