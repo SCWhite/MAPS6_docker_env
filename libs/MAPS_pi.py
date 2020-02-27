@@ -5,12 +5,13 @@ from datetime import datetime
 
 def GET_STORAGE_PATH():
 
-    if len(os.listdir("/media/pi")):
-        path = "/media/pi/" + os.listdir("/media/pi")[0]
+    try:
+        if len(os.listdir("/media/pi")):
+            path = "/media/pi/" + os.listdir("/media/pi")[0]
 
-        return path
+            return path
 
-    else:
+    except:
         path = Conf.FS_SD
 
         return path
