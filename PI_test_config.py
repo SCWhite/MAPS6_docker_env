@@ -30,6 +30,7 @@ POLL_RTC   = 1
 
 #url
 Restful_URL = "https://data.lass-net.org/Upload/MAPS-secure.php?"
+TimeURL = "https://pm25.lass-net.org/util/timestamp.php"
 
 #setting
 GPS_LAT = 25.1933
