@@ -137,7 +137,7 @@ try:
         print(current_mcu_time)
 
         time_status, server_time =  get_rtc_server_time()
-        if(time_status)
+        if(time_status):
             host_time = datetime.utcnow()
             delta_time = host_time - server_time
 
