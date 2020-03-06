@@ -63,37 +63,20 @@ def check_connection():
         connection_flag = "@"
         print("connect OK")
         return 1
-        
-# def time_check():
-#     try:
-#         command = "wget -O /tmp/time1 " + Conf.TimeURL
-#         os.system(command)
-#         fh = open("/tmp/time1","r")
-#         time1 = fh.read()
-#         time1 = datetime.strptime(time1, "%Y-%m-%d %H:%M:%S")
-#     except:
-#         time1 = datetime.utcnow()
-#         return 0 , time1  #no internet use rtc clock
-
-#     time2 = datetime.utcnow()
-
-#     delta_time = time2 - time1
-#     if abs(delta_time.seconds) < 30:
-#         return 1, time2   #accept, don't change / use rtc
-#     else:
-#         return -1, time1  #need to up date time 
 
 def get_rtc_server_time():
     try:
-        command = "wget -O /tmp/time1 " + Conf.TimeURL
+        command = "wget -O /tmp/time1 " + Conf.TimeURL + " >/dev/null 2>&1"
         os.system(command)
         fh = open("/tmp/time1","r")
         server_time = fh.read()
         server_time = datetime.strptime(server_time, "%Y-%m-%d %H:%M:%S")
+        print("got sever time:" + str(server_time))
         return 1 , server_time
     except:
         host_time = datetime.utcnow()
-        return 0 , host_time  #no internet use rtc clock
+        print("use host time:" + str(host_time))
+        return 0 , host_time  #no internet, use system time
 
 
 #start oled displaying
@@ -140,19 +123,25 @@ try:
         if(time_status):
             host_time = datetime.utcnow()
             delta_time = host_time - server_time
+            print("delta_time:" + str(delta_time))
 
-            if abs(delta_time.seconds) < 30:
+            if abs(delta_time.seconds) > 30:
                 print("!!!SET TO severtime!!!")
                 print("server time:")
                 print(server_time)
                 print("host time")
                 print(host_time)
+                #to do
+                #set system time
+                #set mcu RTC time
             else:
                 print("!!!use host time is ok!!!")
                 print("server time:")
                 print(server_time)
                 print("host time")
                 print(host_time)
+                #to do
+                #set mcu RTC time
 
 
     else:
@@ -161,7 +150,7 @@ try:
         current_mcu_time = mcu.GET_RTC_DATE_TIME()
         print("MCU RTC time:")
         print(current_mcu_time)
-        #set system time to RTC clock time
+        #set system time to mcu RTC clock time
 
     print("------------------------")
     print("CHECK PI VERSION")
